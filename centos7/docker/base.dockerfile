@@ -16,7 +16,8 @@ RUN yum install -y \
     libXinerama-devel libXrandr-devel libXrender-devel \
     mesa-libGL-devel mesa-libGLU-devel mesa-dri-drivers \
     dejavu-sans-fonts dejavu-sans-mono-fonts dejavu-serif-fonts \
-    xkeyboard-config
+    xkeyboard-config \
+    xcb-util-devel libxkbcommon-devel libxkbcommon-x11-devel libdrm-devel libXcomposite-devel
 
 # Install a newer set of compilers from the Software Collections repos
 RUN yum install -y centos-release-scl && \
