@@ -29,3 +29,6 @@ cmake \
 
 ninja
 ls -l
+
+# Remove download files
+rm -f $HOME/cmb-superbuild/build/downloads
