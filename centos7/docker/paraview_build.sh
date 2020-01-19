@@ -3,7 +3,6 @@
 readonly cmake_root="$HOME/misc/root/cmake"
 PATH="$PATH:$cmake_root/bin"
 
-mkdir -p $HOME/cmb-superbuild/build
 cd $HOME/cmb-superbuild/build
 
 cmake \
@@ -31,4 +30,4 @@ ninja
 ls -l
 
 # Remove download files
-rm -f $HOME/cmb-superbuild/build/downloads
+rm -f $HOME/cmb-superbuild/build/downloads/*

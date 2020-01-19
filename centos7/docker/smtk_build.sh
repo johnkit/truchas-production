@@ -38,6 +38,6 @@ mv ../CMakeCache.txt .
 ls -l
 
 # Also remove tags from local smtk source; otherwise superbuild might
-# set the wrong smtk version when cmake next run
-cd $HOME/cmb-superbuild/src/superbuild/smtk/src
+# set the wrong smtk version on cmake configure
+cd $HOME/cmb-superbuild/build/superbuild/smtk/src
 git tag -d $(git tag -l)

@@ -1,5 +1,7 @@
 FROM johnkit:cmb-truchas-centos7-smtk
 LABEL maintainer="John Tourtellott <john.tourtellott@kitware.com>"
+USER buildslave
+
 
 # COPY remove_build_files.sh /home/buildslave/remove_build_files.sh
 WORKDIR /home/buildslave/cmb-superbuild/build

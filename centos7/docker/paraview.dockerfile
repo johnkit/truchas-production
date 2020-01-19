@@ -1,8 +1,9 @@
 FROM johnkit:cmb-centos7-base
 MAINTAINER John Tourtellott <john.tourtellott@kitware.com>
+USER buildslave
 
 # Clone cmb-superbuild
-RUN mkdir /home/buildslave/cmb-superbuild
+RUN mkdir -p /home/buildslave/cmb-superbuild/build
 RUN git clone --branch truchas-production --depth 1 --recursive https://gitlab.kitware.com/john.tourtellott/cmb-superbuild.git  /home/buildslave/cmb-superbuild/src
 RUN cd /home/buildslave/cmb-superbuild/src && git log -1
 

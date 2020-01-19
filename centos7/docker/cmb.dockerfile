@@ -1,7 +1,7 @@
 FROM johnkit:cmb-truchas-centos7-truchasext
 LABEL maintainer="John Tourtellott <john.tourtellott@kitware.com>"
-
 ARG package_name
+USER buildslave
 
 # Remove tags from smtk; otherwise wrong smtk version might be detected by superbuild
 RUN cd /home/buildslave/cmb-superbuild/build/superbuild/smtk/src; git tag -d $(git tag -l)
