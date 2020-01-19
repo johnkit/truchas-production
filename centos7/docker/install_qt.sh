@@ -22,6 +22,7 @@ cd "$builddir"
 cmake \
   -DENABLE_qt5:BOOL=ON \
   "-Dqt_install_location:PATH=$HOME/misc/root/qt5" \
+  "-Dqt5_ENABLE_SVG:BOOL=ON" \
   "-Dqt5_EXTRA_CONFIGURATION_OPTIONS:STRING=-no-use-gold-linker" \
   -GNinja \
   "$srcdir/standalone-qt"
