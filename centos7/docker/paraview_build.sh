@@ -14,6 +14,7 @@ cmake \
   -DENABLE_cmb:BOOL=ON \
   -DENABLE_cmbusersguide:BOOL=OFF \
   -DENABLE_DOCUMENTATION:BOOL=OFF \
+  -DENABLE_mesa:BOOL=OFF \
   -DENABLE_python3:BOOL=ON \
   -DENABLE_smtk:BOOL=ON \
   -DENABLE_smtkprojectmanager:BOOL=OFF \
