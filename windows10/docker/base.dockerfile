@@ -1,8 +1,8 @@
 # Script to build base image for truchas
 #  - installs python3
 #  - clones source files
-# docker build -f python3.dockerfile -t johnkit:cmb-truchas-win-base -m 20g --no-cache .
-FROM johnkit:cmb-win-tools
+# docker build -f python3.dockerfile -t johnkit/cmb-truchas-win-base -m 20g --no-cache .
+FROM johnkit/cmb-win-tools
 SHELL [ "powershell", "-command"]
 
 RUN choco install python3 --version 3.7.4 --installargs " '/quiet TargetDir=C:\\Python37 Shortcuts=0 Include_doc=0 Include_tcltk=0 Include_launcher=0 PrependPath=0' " --overrideargs --yes

@@ -1,6 +1,6 @@
-# docker build -f truchas.dockerfile -t johnkit:cmb-truchas-win-truchas -m 20g --no-cache .
+# docker build -f truchas.dockerfile -t johnkit/cmb-truchas-win-truchas -m 20g --no-cache .
 
-FROM johnkit:cmb-truchas-win-projectmanager
+FROM johnkit/cmb-truchas-win-projectmanager
 
 SHELL [ "powershell", "-command"]
 

@@ -1,12 +1,13 @@
-# Script to build johnkit:cmb-win-cmb
-# docker build -f cmb.dockerfile -t johnkit:cmb-win-cmb -m 20g --no-cache .
+# Script to build johnkit/cmb-win-cmb
+# docker build -f cmb.dockerfile -t johnkit/cmb-win-cmb -m 20g --no-cache .
 
-FROM johnkit:cmb-truchas-win-truchas
+FROM johnkit/cmb-truchas-win-truchas
 
 SHELL [ "powershell", "-command"]
 
 # HACK for testing interim fixes
 # RUN cd C:/Users/ContainerUser/code/cmb-superbuild; git fetch origin truchas-production; git checkout FETCH_HEAD; git log -1
+# RUN cd C:/Users/ContainerUser/code/cmb-superbuild/superbuild; git fetch john; git reset --hard john/truchas-production; git log -1
 
 # Klugey, but get package name from .package_name file, because build args don't work
 # COPY ./.package_name C:/Users/ContainerUser/.package_name

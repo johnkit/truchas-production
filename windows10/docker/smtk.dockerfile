@@ -1,9 +1,9 @@
-# Script to build johnkit:cmb-win-smtk
+# Script to build johnkit/cmb-win-smtk
 # Note that this image replaces ninja with unix make, so that we can use
 # the make "fast" targets.
-# docker build -f smtk.dockerfile -t johnkit:cmb-truchas-win-smtk -m 20g --no-cache .
+# docker build -f smtk.dockerfile -t johnkit/cmb-truchas-win-smtk -m 20g --no-cache .
 
-FROM johnkit:cmb-truchas-win-paraview
+FROM johnkit/cmb-truchas-win-paraview
 SHELL [ "powershell", "-command"]
 
 # HACK for testing interim fixes
