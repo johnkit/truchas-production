@@ -1,4 +1,4 @@
-FROM johnkit:cmb-truchas-centos7-projectmanager
+FROM johnkit/cmb-truchas-centos7-projectmanager
 LABEL maintainer="John Tourtellott <john.tourtellott@kitware.com>"
 USER buildslave
 

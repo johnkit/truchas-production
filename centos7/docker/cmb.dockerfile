@@ -1,4 +1,4 @@
-FROM johnkit:cmb-truchas-centos7-truchasext
+FROM johnkit/cmb-truchas-centos7-truchasext
 LABEL maintainer="John Tourtellott <john.tourtellott@kitware.com>"
 ARG package_name
 USER buildslave

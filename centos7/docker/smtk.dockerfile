@@ -1,4 +1,4 @@
-FROM johnkit:cmb-truchas-centos7-paraview
+FROM johnkit/cmb-truchas-centos7-paraview
 LABEL maintainer="John Tourtellott <john.tourtellott@kitware.com>"
 USER buildslave
 

@@ -1,4 +1,4 @@
-FROM johnkit:cmb-truchas-centos7-smtk
+FROM johnkit/cmb-truchas-centos7-smtk
 LABEL maintainer="John Tourtellott <john.tourtellott@kitware.com>"
 USER buildslave
 

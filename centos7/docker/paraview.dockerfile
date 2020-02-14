@@ -1,4 +1,4 @@
-FROM johnkit:cmb-centos7-base
+FROM johnkit/cmb-centos7-base
 MAINTAINER John Tourtellott <john.tourtellott@kitware.com>
 USER buildslave
 
