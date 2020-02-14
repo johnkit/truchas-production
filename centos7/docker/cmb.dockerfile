@@ -12,6 +12,6 @@ WORKDIR /home/buildslave/cmb-superbuild/build
 RUN /home/buildslave/misc/root/cmake/bin/cmake -DCMB_PACKAGE_FILE_NAME:STRING=${package_name} .
 
 RUN scl enable devtoolset-7 -- make cmb/fast; /home/buildslave/remove_build_files.sh; exit 0
-RUN scl enable devtoolset-7 -- $HOME/misc/root/cmake/bin/ctest -R cpack-modelbuilder > ctest.log 2>&1; exit 0
+RUN scl enable devtoolset-7 -- $HOME/misc/root/cmake/bin/ctest -R cpack-modelbuilder -VV > ctest.log 2>&1; exit 0
 
 RUN ls

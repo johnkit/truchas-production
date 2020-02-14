@@ -5,7 +5,7 @@ datecode=`date +%y%m%d`
 package_name=modelbuilder-truchas-centos7-${datecode}
 
 # Generic (cmb-centos-*)
-docker build -f base.dockerfile --tag=johnkit/cmb-centos7-base .
+# docker build -f base.dockerfile --tag=johnkit/cmb-centos7-base .
 
 # Truchas-specific (cmb-truchas-centos-*)
 docker build -f paraview.dockerfile --tag=johnkit/cmb-truchas-centos7-paraview --no-cache .
