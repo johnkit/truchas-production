@@ -1,0 +1,4 @@
+# Work products
+*.log
+.package_name
+modelbuilder-*.zip
