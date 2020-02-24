@@ -1,4 +1,5 @@
 #!/bin/sh
+set -e  # exit on error
 
 # Builds the entire modelbuilder-truchas software chain from scratch
 datecode=`date +%y%m%d`

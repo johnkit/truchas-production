@@ -1,3 +1,19 @@
+# 24-Feb-2020
+
+Fixes bug in deleting attribute after it was renamed in the
+same session.
+
+Changes export panel to hide most settings as "Advanced". Only
+item displayed by default is the path to the Truchas file to be
+generated.
+
+
+
+# 14-Feb-2020
+
+Adds project "Save As" feature.
+
+
 # 31-Jan-2020
 
 Fixes bug that would crash modelbuilder when creating project.
