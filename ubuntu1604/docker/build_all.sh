@@ -11,7 +11,7 @@ docker build -f qt.dockerfile --tag=johnkit/cmb-ubuntu1604-qt --no-cache .
 
 # Truchas-specific (cmb-truchas-ubuntu1604-*)
 docker build -f paraview.dockerfile --tag=johnkit/cmb-truchas-ubuntu1604-paraview --no-cache .
-# docker build -f smtk.dockerfile --tag=johnkit/cmb-truchas-ubuntu1604-smtk --no-cache .
+docker build -f smtk.dockerfile --tag=johnkit/cmb-truchas-ubuntu1604-smtk --no-cache .
 # docker build -f projectmanager.dockerfile --tag=johnkit/cmb-truchas-ubuntu1604-projectmanager --no-cache .
 # docker build -f truchasext.dockerfile --tag=johnkit/cmb-truchas-ubuntu1604-truchasext --no-cache .
 # docker build -f cmb.dockerfile --build-arg package_name=${package_name} --tag=johnkit/cmb-truchas-ubuntu1604-modelbuilder --no-cache .
