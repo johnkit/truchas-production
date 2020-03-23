@@ -8,4 +8,4 @@ SHELL [ "powershell", "-command"]
 # RUN cd C:/Users/ContainerUser/code/cmb-superbuild; git fetch origin truchas-production; git checkout FETCH_HEAD; git log -1
 # RUN cmake .
 
-RUN make smtktruchasextensions/fast; C:\Users\ContainerUser\scripts\remove-files.ps1 superbuild\smtktruchasextensions\build; exit 0
+RUN make smtktruchasextensions/fast; C:\Users\ContainerUser\scripts\remove-files.ps1 superbuild\smtktruchasextensions\build

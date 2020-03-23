@@ -16,4 +16,4 @@ COPY remove_build_files.sh /home/buildslave/remove_build_files.sh
 COPY paraview_build.sh /home/buildslave/paraview_build.sh
 
 WORKDIR /home/buildslave/cmb-superbuild/build
-RUN  scl enable devtoolset-7 -- sh /home/buildslave/paraview_build.sh; /home/buildslave/remove_build_files.sh; exit 0
+RUN  scl enable devtoolset-7 -- sh /home/buildslave/paraview_build.sh; /home/buildslave/remove_build_files.sh

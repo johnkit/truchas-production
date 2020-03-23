@@ -14,6 +14,6 @@ SHELL [ "powershell", "-command"]
 COPY ./set-packagename.ps1 C:/Users/ContainerUser/scripts/set-packagename.ps1
 RUN C:/Users/ContainerUser/scripts/set-packagename.ps1 ${package_name}
 
-RUN make cmb/fast; C:\Users\ContainerUser\scripts\remove-files.ps1 superbuild\cmb\build; exit 0
+RUN make cmb/fast; C:\Users\ContainerUser\scripts\remove-files.ps1 superbuild\cmb\build
 RUN ctest -R cpack-modelbuilder -VV > ctest.log 2>&1; exit 0
 RUN ls

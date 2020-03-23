@@ -41,4 +41,4 @@ RUN cmake \
     /Users/ContainerUser/code/cmb-superbuild
 
 # Build smtk + remove build files + force exit 0 (to save image for debug)
-RUN make smtk/fast; C:\Users\ContainerUser\scripts\remove-files.ps1 superbuild\smtk\build; exit 0
+RUN make smtk/fast; C:\Users\ContainerUser\scripts\remove-files.ps1 superbuild\smtk\build

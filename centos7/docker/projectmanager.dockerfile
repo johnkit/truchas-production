@@ -9,4 +9,4 @@ WORKDIR /home/buildslave/cmb-superbuild/build
 # RUN cd /home/buildslave/cmb-superbuild/src; git fetch; git reset --hard origin/truchas-production; git log -1
 # RUN /home/buildslave/misc/root/cmake/bin/cmake .
 
-RUN  scl enable devtoolset-7 -- make smtkprojectmanager/fast; /home/buildslave/remove_build_files.sh; exit 0
+RUN  scl enable devtoolset-7 -- make smtkprojectmanager/fast; /home/buildslave/remove_build_files.sh

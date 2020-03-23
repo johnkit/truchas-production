@@ -8,4 +8,4 @@ USER buildslave
 # RUN cd /home/buildslave/cmb-superbuild/build; /home/buildslave/misc/root/cmake/bin/cmake .
 
 WORKDIR /home/buildslave/cmb-superbuild/build
-RUN  scl enable devtoolset-7 -- make smtktruchasextensions/fast; /home/buildslave/remove_build_files.sh; exit 0
+RUN  scl enable devtoolset-7 -- make smtktruchasextensions/fast; /home/buildslave/remove_build_files.sh

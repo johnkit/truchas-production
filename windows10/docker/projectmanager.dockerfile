@@ -3,4 +3,4 @@
 
 FROM johnkit/cmb-truchas-win-smtk
 SHELL [ "powershell", "-command"]
-RUN make smtkprojectmanager/fast; C:\Users\ContainerUser\scripts\remove-files.ps1 superbuild\smtkprojectmanager\build; exit 0
+RUN make smtkprojectmanager/fast; C:\Users\ContainerUser\scripts\remove-files.ps1 superbuild\smtkprojectmanager\build
