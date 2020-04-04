@@ -1,10 +1,19 @@
+# 29-Mar-2020
+
+Adds support for enclosure radiation namelists. This includes:
+
+* Top-level Genre/Truchas analysis switch
+* New template and writer logic for generating Genre input files
+* Updates and refactoring of logic to generate Truchas input files
+
+
+
 # 23-Mar-2020
 
 Adds feature to save and load "attribute collection" from
 the Materials tab.
 
 Fixes several bugs in validation logic for multiphase materials.
-
 
 
 # 24-Feb-2020
