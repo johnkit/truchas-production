@@ -1,3 +1,16 @@
+# 04-Apr-2020
+
+Adds "SMTK display toolbar" with two icons/buttons for
+"only show volume entities" and "only show surface entities",
+respectively.
+
+Bug fixes to Truchas workflow files (template and export script files).
+
+Bug fix to material attribute view to respond to user changing
+advance level (combo box).
+
+
+
 # 29-Mar-2020
 
 Adds support for enclosure radiation namelists. This includes:
@@ -5,7 +18,6 @@ Adds support for enclosure radiation namelists. This includes:
 * Top-level Genre/Truchas analysis switch
 * New template and writer logic for generating Genre input files
 * Updates and refactoring of logic to generate Truchas input files
-
 
 
 # 23-Mar-2020
