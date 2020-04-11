@@ -25,5 +25,6 @@ docker container rm temp
 # Create container so we can copy the package file
 $ErrorActionPreference = "Stop"
 docker create -it --name temp johnkit/cmb-truchas-win-modelbuilder powershell
+docker cp temp:C:/Users/ContainerUser/build/cmb-superbuild/ctest.log .
 docker cp temp:C:/Users/ContainerUser/build/cmb-superbuild/$package_name.zip . ; exit 0
 docker container rm -f temp

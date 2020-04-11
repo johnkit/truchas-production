@@ -40,5 +40,5 @@ RUN cmake \
     -DUSE_SYSTEM_qt5:BOOL=ON \
     /Users/ContainerUser/code/cmb-superbuild
 
-# Build smtk + remove build files + force exit 0 (to save image for debug)
+# Build smtk + remove build files
 RUN make smtk/fast; C:\Users\ContainerUser\scripts\remove-files.ps1 superbuild\smtk\build

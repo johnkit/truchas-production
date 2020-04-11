@@ -5,7 +5,7 @@
 FROM johnkit/cmb-truchas-win-base
 SHELL [ "powershell", "-command"]
 
-# Build + remove build files + force exit 0 (to save image for debug)
+# Build + remove build files
 RUN ninja; C:\Users\ContainerUser\scripts\remove-files.ps1 superbuild\*\build\*
 
 RUN ls

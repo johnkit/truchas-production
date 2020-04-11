@@ -14,7 +14,7 @@ WORKDIR /Users/ContainerUser/code
 # Use truchas-production branch with fixes and workarounds
 RUN git clone --recursive --depth 1 --branch truchas-production https://gitlab.kitware.com/john.tourtellott/cmb-superbuild.git
 RUN cd cmb-superbuild; git rev-parse HEAD
-RUN cd C:/Users/ContainerUser/code/cmb-superbuild/superbuild; git remote add john https://gitlab.kitware.com/john.tourtellott/common-superbuild.git; git fetch john; git reset --hard john/truchas-production; git log -1
+# RUN cd C:/Users/ContainerUser/code/cmb-superbuild/superbuild; git remote add john https://gitlab.kitware.com/john.tourtellott/common-superbuild.git; git fetch john; git reset --hard john/truchas-production; git log -1
 
 RUN mkdir -p /Users/ContainerUser/build/cmb-superbuild
 WORKDIR /Users/ContainerUser/build/cmb-superbuild
