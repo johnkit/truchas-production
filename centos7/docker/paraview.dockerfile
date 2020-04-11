@@ -8,7 +8,7 @@ RUN git clone --branch truchas-production --depth 1 --recursive https://gitlab.k
 RUN cd /home/buildslave/cmb-superbuild/src && git log -1
 
 # Explicitly set the common-superbuild (in lieu of changing .gitmodules file)
-RUN cd /home/buildslave/cmb-superbuild/src/superbuild; git remote add john https://gitlab.kitware.com/john.tourtellott/common-superbuild.git; git fetch john; git reset --hard john/truchas-production; git log -1
+# RUN cd /home/buildslave/cmb-superbuild/src/superbuild; git remote add john https://gitlab.kitware.com/john.tourtellott/common-superbuild.git; git fetch john; git reset --hard john/truchas-production; git log -1
 # RUN cd /home/buildslave/cmb-superbuild/src/superbuild; git remote add john https://gitlab.kitware.com/john.tourtellott/common-superbuild.git; git fetch john; git reset --hard john/llvm-mesa; git log -1
 
 # Copy build scripts
