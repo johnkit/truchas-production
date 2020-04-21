@@ -3,7 +3,7 @@ LABEL maintainer="John Tourtellott <john.tourtellott@kitware.com>"
 
 # Install build packages
 RUN apt-get update
-RUN apt-get install -y git build-essential curl python3-minimal zlib1g-dev
+RUN apt-get install -y git build-essential libcurl4-openssl-dev curl python3-minimal zlib1g-dev vim
 
 # Set up the buildslave user
 RUN useradd -c buildslave -d /home/buildslave -M buildslave
