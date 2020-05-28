@@ -1,3 +1,27 @@
+# 18-Apr-2020
+
+Adds action (icon) to the Truchas toolbar for toggling the visibility
+of the induction heating mesh.
+
+Updates the create-project logic to automatically assign colors
+to the input heat transfer mesh. The color palettes are currently
+hard-coded to Brewer Qualitative Dark for surfaces (side sets) and
+Brewer Qualitative Pastel for volumes (element blocks).
+
+Updates the Emissivity View to require all side sets assigned to
+an enclosure surface to also be assigned an emissivity value. Also
+sets custom labels on the Emissivity View association widget.
+
+Updates the python logic for writing Genre input files to surround
+symmetry options in double quotes (e.g., "MirrorX", "RotZ4").
+
+Fixes issue with busy/wait cursor not active for the entire time
+when opening a project.
+
+Fixes several non-fatal error messages related to SMTK color options
+and resource visibility.
+
+
 # 04-Apr-2020
 
 Adds "SMTK display toolbar" with two icons/buttons for
@@ -8,7 +32,6 @@ Bug fixes to Truchas workflow files (template and export script files).
 
 Bug fix to material attribute view to respond to user changing
 advance level (combo box).
-
 
 
 # 29-Mar-2020
