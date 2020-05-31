@@ -1,3 +1,13 @@
+# 31-May-2020
+
+Fixes bug where Truchas toolbar didn't recognize models of
+project when first created.
+
+Fixes export bugs writing material functions, tabular_dim,
+emissivity. Omits coord_scale_factor from ENCLOSURE_RADIATION
+namelist.
+
+
 # 18-Apr-2020
 
 Adds action (icon) to the Truchas toolbar for toggling the visibility
