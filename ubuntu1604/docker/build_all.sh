@@ -17,6 +17,8 @@ docker build -f truchasext.dockerfile --tag=johnkit/cmb-truchas-ubuntu1604-truch
 docker build -f cmb.dockerfile --build-arg package_name=${package_name} --tag=johnkit/cmb-truchas-ubuntu1604-modelbuilder --no-cache .
 
 # Copy the package file
-docker create -it --name temp johnkit/cmb-truchas-ubuntu1604-modelbuilder bash
-docker cp temp:/home/buildslave/cmb-superbuild/build/${package_name}.tar.gz .
-docker rm -f temp
+timestamp=`date +%s`
+temp="temp${timestamp}"
+docker create -it --name ${temp} johnkit/cmb-truchas-ubuntu1604-modelbuilder bash
+docker cp ${temp}:/home/buildslave/cmb-superbuild/build/${package_name}.tar.gz .
+docker rm -f ${temp}
