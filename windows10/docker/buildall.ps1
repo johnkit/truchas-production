@@ -2,6 +2,9 @@
 
 $ErrorActionPreference = "Stop"
 
+# Remove any package file and extant container
+Remove-Item *.zip
+
 # Generate package name and write to local file
 $datecode = Get-Date -Format "yyMMdd"
 $package_name = "modelbuilder-truchas-windows-$datecode"
@@ -17,14 +20,11 @@ docker build -f projectmanager.dockerfile -t johnkit/cmb-truchas-win-projectmana
 docker build -f truchas.dockerfile -t johnkit/cmb-truchas-win-truchas -m 20g --no-cache .
 docker build -f cmb.dockerfile -t johnkit/cmb-truchas-win-modelbuilder -m 20g --no-cache .
 
-# Remove any package file and extand container
-$ErrorActionPreference = "Continue"
-Remove-Item *.zip
-docker container rm temp
-
 # Create container so we can copy the package file
 $ErrorActionPreference = "Stop"
-docker create -it --name temp johnkit/cmb-truchas-win-modelbuilder powershell
-docker cp temp:C:/Users/ContainerUser/build/cmb-superbuild/ctest.log .
-docker cp temp:C:/Users/ContainerUser/build/cmb-superbuild/$package_name.zip . ; exit 0
-docker container rm -f temp
+$timecode = Get-Date -Format "yyMMddHHmmss"
+$temp = "temp$timecode"
+docker create -it --name "$temp" johnkit/cmb-truchas-win-modelbuilder powershell
+docker cp "${temp}:C:/Users/ContainerUser/build/cmb-superbuild/ctest.log" .
+docker cp "${temp}:C:/Users/ContainerUser/build/cmb-superbuild/$package_name.zip" .
+docker container rm "$temp"
