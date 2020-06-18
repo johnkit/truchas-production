@@ -1,3 +1,15 @@
+# 14-Jun-2020
+
+Updates export logic to write material namelists in the current
+Truchas format (droppoing MATERIAL_SYSTEM namelist and many other
+changes).
+
+Fixes bugs in Truchas writer logic.
+
+Note: the background-material option is temporarily unavailable
+pending resolution of user interface issues.
+
+
 # 31-May-2020
 
 Fixes bug where Truchas toolbar didn't recognize models of
