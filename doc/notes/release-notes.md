@@ -1,3 +1,21 @@
+# 11-Jul-2020
+
+Major attribute reorganization, primarily focused on materials
+
+* Flatten material/phase properties
+* Add "invariant-properties" group for density, reference_enthalpy,
+  reference_temperature
+* Make shared properties now act as default properties (can be overridden
+  in individual phases)
+* Add support for Truchas specific_enthalpy_func and solid_frac_table variables
+* Copy phase 1 properties to common group when adding 2nd phase
+* Add "body" attribute and "Body" tab to subsume initial-conditions and
+  material associations
+* Refactor views to replace "Globals" and "Other" tabs with "Outputs"
+
+Backward compatibility has not been tested and is not guaranteed.
+
+
 # 14-Jun-2020
 
 Updates export logic to write material namelists in the current
