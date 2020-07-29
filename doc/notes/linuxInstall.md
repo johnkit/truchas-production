@@ -1,4 +1,4 @@
-# CMB Modelbuilder Install Instructions for Windows
+# CMB Modelbuilder Install Instructions for Linux
 
 The CMB modelbuilder application can be used to create Truchas input
 files from data entered in form-style attribute panels.
@@ -6,24 +6,25 @@ files from data entered in form-style attribute panels.
 
 ## Install
 
-The Windows version of modelbuilder is distributed as a zip file.
-There is no installer program; you only unzip the file to a convenient
-location in your user area.
+The linux version of modelbuilder is distributed as a tar file that
+can be extracted to any folder on your system.
 
-Before running modelbuilder, it is recommended that you also create a
-projects root folder for modelbuilder projects that you will create.
+The modelbuilder packages are built using CentOS version 7 and has
+not been tested on many different linux versions.
 
 
 ## Run
 
-The modelbuilder.exe program is in the "bin" subfolder. You can create
-a shortcut to it on your desktop, if desired.
+The modelbuilder executable is in the "bin" subfolder.
 
-The first time you run modelbuilder.exe, your system might display a
-blue popup with the title "Windows protected your PC". This because
-our packages are not signed with MicroSoft. You can proceed to run
-modelbuilder by clicking the "More Info" link, which brings up a
-"Run anyway" button.
+On some systems, including Ubuntu 16.04, you might see an error message
+on startup like this:
+
+    error while loading shared libraries: libcrypto.so.10: cannot open shared object file: No such file or directory
+
+These libraries are not needed to run modelbuilder on the desktop (they are for
+connecting paraview to remote servers). You can workaround this by deleteing or
+moving the files that match lib/libcrypt*.
 
 
 ## Plugin Setup
@@ -45,9 +46,9 @@ plugins: smtkProjectManagerPlugin and smtkTruchasPlugin.
   "Project" menu should now be visible.
 
 If either of the plugins are not shown in the panel, you might have to use
-the "Load New..." button to navigate to the plugin dll file in the package.
-The dll files can be found under the install "bin" directory, at the path
-bin/smtk-3.3.0/*.
+the "Load New..." button to navigate to the plugin .so file in the package.
+The plugin files can be found under the install "lib" directory, at the path
+lib/smtk-3.3.0/*.
 
 
 ## Settings Setup
