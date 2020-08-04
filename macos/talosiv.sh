@@ -4,7 +4,7 @@
 # https://gitlab.kitware.com/john.tourtellott/cmb-superbuild.git
 # cmb-superbuild:truchas-production
 
-source_path=/Users/john/projects/lanl/git/cmb-superbuild
+source_path=/Users/johnt/projects/truchas/git/cmb-superbuild
 echo Using source path ${source_path}
 
 read -p "Are you sure the source path is correct and up to date? [y/N]: " -n 1 -r
@@ -20,7 +20,7 @@ datecode=`date +%y%m%d`
 package_name=modelbuilder-truchas-macos-${datecode}
 echo Using package_name ${package_name}
 
-cmake \
+/Users/johnt/Applications/CMake.app/Contents/bin/cmake \
   -GNinja \
   -DCMAKE_INSTALL_PREFIX:PATH=install \
   -DCMAKE_OSX_DEPLOYMENT_TARGET:STRING=10.13 \
@@ -33,8 +33,8 @@ cmake \
   -DENABLE_smtkprojectmanager:BOOL=ON \
   -DENABLE_smtkresourcemanagerstate:BOOL=OFF \
   -DENABLE_smtkusersguide:BOOL=OFF \
-  -DQt5_DIR:PATH=/Users/john/projects/qt.io/5.12.6/clang_64/lib/cmake/Qt5 \
-  -Dsuperbuild_download_location:PATH=/Users/john/projects/downloads \
+  -DQt5_DIR:PATH=/Users/johnt/projects/qt/5.12.6/clang_64/lib/cmake/Qt5 \
+  -Dsuperbuild_download_location:PATH=/Users/johnt/projects/downloads \
   -DTEST_cmb:BOOL=OFF \
   -DTEST_smtk:BOOL=OFF \
   -DUSE_SYSTEM_qt5:BOOL=ON \
@@ -42,4 +42,5 @@ cmake \
 
 ninja
 
-ctest -R modelbuilder -VV > ctest.log 2>&1
+/Users/johnt/Applications/CMake.app/Contents/bin/ctest \
+  -R modelbuilder -VV > ctest.log 2>&1
