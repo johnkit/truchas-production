@@ -1,3 +1,17 @@
+# 03-Aug-2020
+
+Continued attribute reorganization
+
+* Updates logic for making phase properties optional vs required
+  depending on state of shared/common property.
+* Uses new option to require specific_enthalpy_func and solid_frac_table
+  editors to be expression-only.
+* Refactors validation logic into C++ class with python bindings, so
+  that same validation logic is used for UI and export functions.
+* Migrates other material-attribute logic to C++ class and so that it can
+  unit tests can be added.
+
+
 # 11-Jul-2020
 
 Major attribute reorganization, primarily focused on materials
