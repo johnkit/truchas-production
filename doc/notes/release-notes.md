@@ -1,3 +1,15 @@
+# 09-Oct-2020
+
+Adds support for Fluid Flow physics including flow numerics, flow solvers,
+boundary conditions, material tracking/priority. Namelist outputs now include
+FLOW, FLOW_BC, FLOW_PRESSURE_SOLVER, FLOW_VISCOUS_SOLVER, VFUNCTION.
+
+# 26-Aug-2020
+
+Incorporates new attribute features to add "Load From File" button to
+tabular functions.
+
+
 # 03-Aug-2020
 
 Continued attribute reorganization
