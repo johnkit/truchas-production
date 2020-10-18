@@ -1,8 +1,19 @@
+# 18-Oct-2020
+
+Fixes bugs in the 09-Oct-2020 build.
+
+* Fixes crash creating material attributes.
+* Fixes error writing void and solid inflow materials.
+* Fixes bug saving vector functions to attribute resource file.
+* Fixes bug initializing two-level resource browser.
+
+
 # 09-Oct-2020
 
 Adds support for Fluid Flow physics including flow numerics, flow solvers,
 boundary conditions, material tracking/priority. Namelist outputs now include
 FLOW, FLOW_BC, FLOW_PRESSURE_SOLVER, FLOW_VISCOUS_SOLVER, VFUNCTION.
+
 
 # 26-Aug-2020
 
