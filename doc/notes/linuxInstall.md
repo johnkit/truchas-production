@@ -12,19 +12,34 @@ can be extracted to any folder on your system.
 The modelbuilder packages are built using CentOS version 7 and has
 not been tested on many different linux versions.
 
-
-## Run
-
 The modelbuilder executable is in the "bin" subfolder.
 
+## Ubuntu-specific setup
+
+### libcurl
+
+The libcurl library is not always included in the baseline Ubuntu system.
+
+### libglvnd-dev
+
+On some systems, you might see an OpenGL error message on startup like this:
+
+    error while loading shared libraries: libOpenGL.so.0: cannot open shared object file: No such file or directory
+
+To resolve this, install the `libglvnd-dev` package.
+
+### libcrypt
+
 On some systems, including Ubuntu 16.04, you might see an error message
-on startup like this:
+on startup like one of these two:
 
     error while loading shared libraries: libcrypto.so.10: cannot open shared object file: No such file or directory
 
+    error while loading shared libraries: libfreebl3.so: cannot open shared object file: No such file or directory
+
 These libraries are not needed to run modelbuilder on the desktop (they are for
 connecting paraview to remote servers). You can workaround this by deleteing or
-moving the files that match lib/libcrypt*.
+moving the files that match `lib/libcrypt*`.
 
 
 ## Plugin Setup

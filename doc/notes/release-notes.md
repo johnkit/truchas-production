@@ -1,3 +1,14 @@
+# 24-Oct-2020
+
+Fixes issues with the 18-Oct-2020 build.
+
+* Fixes error loading material collection (.sbi file).
+* Fixes error marking attribute resource as modified when loaded from file.
+* Fixes error displaying material priority for multi-phase materials.
+* Includes minor, backward-compatible updates to flow attributes.
+* Fixes multiple errors writing Truchas input files.
+
+
 # 18-Oct-2020
 
 Fixes bugs in the 09-Oct-2020 build.
