@@ -1,0 +1,39 @@
+{
+  "name": "setup",
+  "steps": [
+    {
+      "action": "If testing was specified in a GitLab issue and download folder, add a comment to the GitLab issue indicating which packages are available, which one(s) to be tested. You can abbreviate using \"linux\", \"macOS\", and \"windows\".",
+      "title": "Record package info"
+    },
+    {
+      "action": "On the test machine, move any previous modelbuilder downloads/installs to the trash folder.",
+      "title": "Delete previous modelbuilder packages"
+    },
+    {
+      "action": "Create a test directory using a naming convention such as <tt>.../cmb/testing/yyyy-mm-dd</tt>.",
+      "title": "Create root test folder"
+    },
+    {
+      "action": "Download the modelbuilder package(s) to test and unzip into the test directory. Note that it might take several minutes to unzip the Windows package.",
+      "title": "Download modelbuilder package"
+    },
+    {
+      "action": "<li>On linux, the directory is typically <tt>~/.config/modelbuilder/</tt></li>\n<li> On macOS, the directory is typically <tt>~/.config/modelbuilder</tt></li>\n<li> On Windows, the directory is typically <tt>~/AppData/Roaming/modelbuilder</tt></li>\n",
+      "title": "Delete any previous modelbuilder settings files"
+    },
+    {
+      "action": "<li>Start the modelbuilder executable</li>\n<li>Click on the toolbar button \"Apply changes to parameters automatically\". The icon is in the first (top) toolbar and looks like a 3D box with an arrow pointing to the upper right.</li>\n<li>Close all panels except for \"Attribute Editor\", \"Output Messages\", \"Resources\". Undock and drag the \"Attribute Editor\" over the \"Resources\" panel so that they dock as tabs.</li>\n<li>In the View => Toolbars menu item, uncheck the \"Measurement Tools\" item to hide the \"Ruler\" icon.</li>\n<li>Adjust the left sidebar width to approximately 1/3 of the horizontal space.</li>\n",
+      "title": "Configure modelbuilder executable"
+    },
+    {
+      "action": "<li>Select the Tools => Manage Plugins menu to open the Plugin Manager dialog.</li>\n<li>Select the \"smtkProjectManagerPlugin\" in the list of Local Plugins. It should be one of only a few with its \"Property\" set to \"Not Loaded\".</li>\n<li>Click \"Load Selected\".</li>\n<li>Open the smtkProjectManagerPlugin options and check the \"Auto Load\" checkbox.</li>\n<li>Close the Plugin Manager dialog.</li>\n",
+      "expect": "modelbuilder menu to now include a \"Project\" menu.",
+      "title": "Load the project manager plugin"
+    },
+    {
+      "action": "<li>Exit modelbuilder</li>\n<li>Restart modelbuilder</li>\n",
+      "expect": "Verify that the widget layout is the same and that the \"Project\" menu is still displayed.",
+      "title": "Restart modelbuilder"
+    }
+  ]
+}

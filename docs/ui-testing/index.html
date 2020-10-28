@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Truchas UI Testing</title>
+  <script src="https://unpkg.com/vue"></script>
+  <script src="https://unpkg.com/http-vue-loader"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="./testNames.js"></script>
+  <link rel="stylesheet" href="./runner.css" />
+</head>
+<body>
+  <h3>Truchas UI Tests</h3>
+  <div id="app">
+    <test-list :tests="tests" @selected="onSelected"></test-list>
+    <hr />
+    <test-runner v-if="selectedTest" :test="selectedTest" class="steps"></test-runner>
+  </div>
+  <br />
+  <br />
+  <a href="/">truchas-production home</a>
+
+  <script>
+    // Note: variable "testNames" injected by testNames.js
+
+    // Use hash to prevent httpVueLoader caching
+    let hash = Math.random().toString(36).substring(2, 8);
+    let qhash = `?${hash}`;
+
+    new Vue({
+      el: '#app',
+      components: {
+        'test-list': httpVueLoader('TestList.vue' + qhash),
+        'test-runner': httpVueLoader('TestRunner.vue' + qhash),
+      },
+      data: function() {
+        return {
+          selectedTest: null,
+          tests: testNames,
+        }
+      },  // data
+      methods: {
+        onSelected: function(testName) {
+          this.selectedTest = testName;
+          console.log(`User selected test ${this.selectedTest}`)
+        }
+      },  // methods
+    });
+  </script>
+</body>
