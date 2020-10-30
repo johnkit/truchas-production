@@ -1,0 +1,70 @@
+{
+  "name": "prob3",
+  "steps": [
+    {
+      "action": "Complete the setup procedures first, include new test folder with today's date.",
+      "title": "Setup"
+    },
+    {
+      "action": "Clone the truchas-extensions repository, either\n<a class=\"literal-link\" target=\"_blank\" href=\"https://gitlab.kitware.com/cmb/plugins/truchas-extensions.git\"></a>\nor <a class=\"literal-link\" target=\"_blank\" href=\"git@gitlab.kitware.com:cmb/plugins/truchas-extensions.git\"></a>.\n",
+      "title": "Clone truchas-extensions repository"
+    },
+    {
+      "action": "Select Project => New Project...",
+      "expect": "modelbuilder to open a directory browser dialog",
+      "title": "New project"
+    },
+    {
+      "action": "In that dialog, navigate to the test directory you created in the setup procedure and create a subdirectory. Select the new subdirectory and click the `OK`.",
+      "expect": "modelbuilder to display a \"Specify New Project\" dialog with the \"Workspace Directory\" and \"Name (Subdirectory)\" fields set.",
+      "title": "New project directory"
+    },
+    {
+      "action": "Set the \"Simulation Template File\" to the ACE3P template that is in the truchas-extensions repository at `simulation-workflows/Truchas.sbt`.",
+      "title": "Simulation template \"Truchas.sbt\""
+    },
+    {
+      "action": "Set the \"Geometry File\" to `truchas-extensions/test/cmb-target-problems/meshes/mesh2.gen`.",
+      "title": "Geometry model \"mesh2.gen\""
+    },
+    {
+      "action": "Click the \"Apply\" button.",
+      "expect": "modelbuilder to close the dialog, then display the model geometry in the 3D view and update the Attribute Editor to display a \"Modules\" tab. On some systems, the model is not immediately displayed, but instead it appears when the \"Resources\" tab is selected. If that occurs, add a comment to the GitLab issue. Verify that there are two items listed in the \"Resources\" panel, labeled `sbi.default` and `pillbox4`.",
+      "title": "Apply"
+    },
+    {
+      "action": "Above in the tool bars you should see three buttons with eyes, select the one that says \"Show only surface entities\"",
+      "expect": "The color of the model to change to darker colors.",
+      "title": "Surface Entities"
+    },
+    {
+      "action": "In the \"Analysis\" tab select \"Truchas\" and \"Heat Transfer\"",
+      "expect": "Model builder to open a several modules in the \"Analysis\" tab",
+      "title": "Analysis"
+    },
+    {
+      "action": "In the \"Analysis\" tab under the \"Numeric\" section set the:\n<ol>\n  <li>Dt_init = 0.01</li>\n  <li>Dt_Grow = 5.0</li>\n  <li>Dt_Max = 60</li>\n</ol>\n",
+      "title": "Numerics"
+    },
+    {
+      "action": "In the \"Materials\" tab\n<ol>\n  <li>Click \"New\" and name it graphite-2020</li>\n  <li>Set the density to 1750</li>\n  <li>Set the enthalpy to \"Specific heat\" => 1500</li>\n  <li>Set conductivity to 100</li>\n</ol>\nCreate another new material\n<ol>\n  <li>Set the name to uranium</li>\n  <li>Set the density to 17500</li>\n  <li>Set the enthalpy to \"Specific heat\" => 160.9</li>\n  <li>Set conductivity to 46.05</li>\n</ol>\n",
+      "title": "Materials"
+    },
+    {
+      "action": "In the uranium material you just created:\n<ol>\n  <li>Uncheck \"Enthalpy\" and click \"Add Phase\"</li>\n  <li>Name Phase 1 \"gamma-U\"</li>\n  <li>Phase Enthalpy => Specific Heat => expect field to display 160.9</li>\n</ol>\nPhase Change\n<ol>  \n  <li>Set Latent heat to 35794</li>\n  <li>Set Low transition temp to 1396</li>\n  <li>Set High transition temp to 1416</li>\n</ol>\nPhase 2\n<ol>\n  <li>Name Phase 2 \"liquid-U\"</li>\n  <li>Enthalpy => SPecific Heat => 201.3</li>\n</ol>\n",
+      "title": "Adding Uranium phases"
+    },
+    {
+      "action": "At this point save the project with the in the \"Project\" tab and clicking \"Save Project\"",
+      "title": "Checkpoint"
+    },
+    {
+      "action": "In the \"Bodies\" tab:\n<ol>\n  <li>Click \"New\" and set the material type to uranium</li>\n  <li>Set the temperature to 1500</li>\n  <li>Assign element block 1</li>\n</ol>\nCreate another new material\n<ol>\n  <li>Set the new material to graphite-2020</li>\n  <li>Click the f(x) button next to the temp</li>\n  <li>Select function type \"Tabular\"</li>\n  <li>Set the independant variable to \"Z\"</li>\n  <li>First row -0.075, 1200</li>\n  <li>Second row 0.285, 1400</li>\n  <li>Click \"okay\"</li>\n  <li>Assign block 2-5</li>\n</ol>\n",
+      "title": "Bodies"
+    },
+    {
+      "action": "Save the file in your test folder under the name \"prob3.sbi\" and export",
+      "title": "Save"
+    }
+  ]
+}

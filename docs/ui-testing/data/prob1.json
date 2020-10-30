@@ -1,0 +1,86 @@
+{
+  "name": "prob1",
+  "steps": [
+    {
+      "action": "Complete the setup procedures first, include new test folder with today's date.",
+      "title": "Setup"
+    },
+    {
+      "action": "Clone the truchas-extensions repository, either\n<a class=\"literal-link\" target=\"_blank\" href=\"https://gitlab.kitware.com/cmb/plugins/truchas-extensions.git\"></a>\nor <a class=\"literal-link\" target=\"_blank\" href=\"git@gitlab.kitware.com:cmb/plugins/truchas-extensions.git\"></a>.\n",
+      "title": "Clone truchas-extensions repository"
+    },
+    {
+      "action": "Select Project => New Project...",
+      "expect": "modelbuilder to open a directory browser dialog",
+      "title": "New project"
+    },
+    {
+      "action": "In that dialog, navigate to the test directory you created in the setup procedure and create a subdirectory. Select the new subdirectory and click the `OK`.",
+      "expect": "modelbuilder to display a \"Specify New Project\" dialog with the \"Workspace Directory\" and \"Name (Subdirectory)\" fields set.",
+      "title": "New project directory"
+    },
+    {
+      "action": "Set the \"Simulation Template File\" to the ACE3P template that is in the truchas-extensions repository at `simulation-workflows/Truchas.sbt`.",
+      "title": "Simulation template \"Truchas.sbt\""
+    },
+    {
+      "action": "Set the \"Geometry File\" to `truchas-extensions/test/cmb-target-problems/meshes/mesh2.gen`.",
+      "title": "Geometry model \"mesh2.gen\""
+    },
+    {
+      "action": "Click the \"Apply\" button.",
+      "expect": "modelbuilder to close the dialog, then display the model geometry in the 3D view and update the Attribute Editor to display a \"Modules\" tab. On some systems, the model is not immediately displayed, but instead it appears when the \"Resources\" tab is selected. If that occurs, add a comment to the GitLab issue. Verify that there are two items listed in the \"Resources\" panel, labeled `sbi.default` and `pillbox4`.",
+      "title": "Apply"
+    },
+    {
+      "action": "Above in the tool bars you should see three buttons with eyes, select the one that says \"Show only surface entities\"",
+      "expect": "The color of the model to change to darker colors.",
+      "title": "Surface Entities"
+    },
+    {
+      "action": "In the \"Analysis\" tab select \"Truchas\" and \"Heat Transfer\"",
+      "expect": "Model builder to open a several modules in the \"Analysis\" tab",
+      "title": "Analysis"
+    },
+    {
+      "action": "In the \"Analysis\" tab under the \"Numeric\" section set the:\n<ol>\n  <li>Dt_init = 0.01</li>\n  <li>Dt_Grow = 5.0</li>\n  <li>Dt_Max = 60</li>\n</ol>\n",
+      "title": "Numerics"
+    },
+    {
+      "action": "In the \"Materials\" tab\n<ol>\n  <li>Click \"New\" and name it graphite-2020</li>\n  <li>Set the density to 1750</li>\n  <li>Set the enthalpy to \"Specific heat\"</li>\n  <li>Set conductivity to 100</li>\n  <li>Click the \"f(x)\" tool & expect a dropdown box (Click dropdown and select create if needed)</li>\n</ol>\nIn the dialog popup\n<ol>\n  <li>Set the function type to \"polynomial\"</li>\n  <li>In the first row add a coefficient of 240.6 and an exponent of 0</li>\n  <li>Add a new row and enter values 2.50167 and 1</li>\n  <li>Add a new row and enter values -1.1231e-3 and 2</li>\n  <li>Add a new row and enter values 1.7e-7 and 3</li>\n  <li>Press \"Okay\"</li>\n</ol>\n",
+      "title": "Materials"
+    },
+    {
+      "action": "At this point save the project with the in the \"Project\" tab and clicking \"Save Project\"",
+      "title": "Checkpoint"
+    },
+    {
+      "action": "In modelbuilder navigate to Modules => Heat Transfer => Boundary Conditions => Boundary\n<ol>\n  <li>Select flux from the dropdown menu => New => Heat Flux = 0 => side set 1</li>\n  <li>HTC => New => coef 50 ref temp 300 => side set 2</li>\n  <li>Radiation => New => emiss 0.75, amb temp 300 => side sets 20,21,22</li>\n  <li>Flux => New => 0 => side sets 10, 11, 23</li>\n  <li>Flux => New => 0 => side set 6</li>\n</ol>\n",
+      "title": "Modules"
+    },
+    {
+      "action": "In modelbuilder navigate to Modules => Heat Transfer => Boundary Conditions => Boundary\n<ol>\n  <li>HTC -> New => coef 500, side set 30</li>\n  <li>Gap radiation => New => emiss 0.75, side set 40</li>\n  <li>HTC => New => coef 500, side sets 41 42</li>\n  <li>HTC => New coef 200, side sets 50, 51</li>\n  <li>HTC => New => coef 0, amb temp 300, side set 24</li>\n</ol>\n",
+      "title": "Interface"
+    },
+    {
+      "action": "At this point save the project with the in the \"Project\" tab and clicking \"Save Project\"",
+      "title": "Checkpoint"
+    },
+    {
+      "action": "In modelbuilder navigate to Bodies => Body Assignment\n<ol>\n  <li>New =></li> \n  <li>Material => graphite-2020</li>\n  <li>Initial Temp => f(x), \"Create...\"</li> \n</ol>  \nIn the dialog popup\n<ol>\n  <li>Set the function type to \"polynomial\"</li>\n  <li>In the first row add a coefficient of 1500 and an exponent of 0, 0, 0</li>\n  <li>Add a new row and enter values -1000 and 2, 2, 0</li>\n  <li>Add a new row and enter values 100 and 0, 0, 1</li>\n  <li>Press \"Okay\"</li>\n</ol>\nBack in the Body assignment tab\n<ol>\n  <li>Assign to blocks 2-5</li>\n</ol>\nAdd another new body  \n<ol>\n  <li>Set the Material to |Void</li>\n  <li>Set the Initial Temp 1500</li>\n  <li>Assign to block 1</li>\n</ol> \n",
+      "title": "Bodies"
+    },
+    {
+      "action": "At this point save the project with the in the \"Project\" tab and clicking \"Save Project\"",
+      "title": "Checkpoint"
+    },
+    {
+      "action": "<ol>\n  <li>Set End time 3600</li>\n  <li>Initial Output Delta-Time 60</li>\n  <li>Addition Output Control => Add Row</li>\n  <li>After Time 600</li>\n  <li>Use Delta Time 300</li>\n</ol>\n",
+      "title": "Outputs"
+    },
+    {
+      "action": "Save and export",
+      "title": "Outputs"
+    }
+  ]
+}
