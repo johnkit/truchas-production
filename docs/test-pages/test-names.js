@@ -1,2 +1,3 @@
 let testNames = [
+  "setup"
 ]
