@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Test-Pages</title>
+  <link rel="icon" href="tachometer.svg" sizes="any" type="image/svg+xml">
+
+  <script src="https://unpkg.com/vue"></script>
+  <script src="https://unpkg.com/http-vue-loader"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="./test-names.js"></script>
+  <link rel="stylesheet" href="./runner.css" />
+</head>
+<body>
+  <h3>Test Pages</h3>
+  <div id="app">
+    <test-list :tests="tests" @selected="onSelected"></test-list>
+    <hr />
+    <test-runner v-if="selectedTest" :test="selectedTest" class="steps"></test-runner>
+  </div>
+  <br />
+  <br />
+  <a href="/">home</a>
+
+  <script>
+    // Note: variable "testNames" injected by test-names.js
+
+    // Use hash to prevent httpVueLoader caching
+    let hash = Math.random().toString(36).substring(2, 8);
+    let qhash = `?${hash}`;
+
+    new Vue({
+      el: '#app',
+      components: {
+        'test-list': httpVueLoader('./components/TestList.vue' + qhash),
+        'test-runner': httpVueLoader('./components/TestRunner.vue' + qhash),
+      },
+      data: function() {
+        return {
+          selectedTest: null,
+          tests: testNames,
+        }
+      },  // data
+      methods: {
+        onSelected: function(testName) {
+          this.selectedTest = testName;
+          console.log(`User selected test ${this.selectedTest}`)
+        }
+      },  // methods
+    });
+  </script>
+</body>
