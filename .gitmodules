@@ -1,0 +1,3 @@
+[submodule "test/test-pages"]
+	path = test/test-pages
+	url = https://github.com/johnkit/test-pages.git

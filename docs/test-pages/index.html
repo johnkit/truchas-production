@@ -2,15 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Truchas UI Testing</title>
+  <title>Test-Pages</title>
+  <link rel="icon" href="tachometer.svg" sizes="any" type="image/svg+xml">
+
   <script src="https://unpkg.com/vue"></script>
   <script src="https://unpkg.com/http-vue-loader"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script src="./testNames.js"></script>
+  <script src="./test-names.js"></script>
   <link rel="stylesheet" href="./runner.css" />
 </head>
 <body>
-  <h3>Truchas UI Tests</h3>
+  <h3>Test Pages</h3>
   <div id="app">
     <test-list :tests="tests" @selected="onSelected"></test-list>
     <hr />
@@ -18,10 +20,10 @@
   </div>
   <br />
   <br />
-  <a href="/">truchas-production home</a>
+  <a href="/">home</a>
 
   <script>
-    // Note: variable "testNames" injected by testNames.js
+    // Note: variable "testNames" injected by test-names.js
 
     // Use hash to prevent httpVueLoader caching
     let hash = Math.random().toString(36).substring(2, 8);
@@ -30,8 +32,8 @@
     new Vue({
       el: '#app',
       components: {
-        'test-list': httpVueLoader('TestList.vue' + qhash),
-        'test-runner': httpVueLoader('TestRunner.vue' + qhash),
+        'test-list': httpVueLoader('./components/TestList.vue' + qhash),
+        'test-runner': httpVueLoader('./components/TestRunner.vue' + qhash),
       },
       data: function() {
         return {

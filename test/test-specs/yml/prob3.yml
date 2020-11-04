@@ -1,0 +1,118 @@
+name: prob3
+
+steps:
+  - title:  Setup, create test folder yyyy-mm-dd
+    action: Complete the setup procedures first, include new test folder with today's date.
+
+  - title:  Clone truchas-extensions repository
+    action: |
+      Clone the truchas-extensions repository, either
+      <a class="literal-link" target="_blank" href="https://gitlab.kitware.com/cmb/plugins/truchas-extensions.git"></a>
+      or <a class="literal-link" target="_blank" href="git@gitlab.kitware.com:cmb/plugins/truchas-extensions.git"></a>.
+
+  - title:  New project
+    action: Select Project => New Project...
+    expect: modelbuilder to open a directory browser dialog
+
+  - title:  New project directory yyyy-mm-dd/prob3
+    action: In that dialog, navigate to the test directory you created in the setup procedure and create a subdirectory <tt>yyyy-mm-dd/prob3</tt>. Select the new subdirectory and click the `OK`.
+    expect: modelbuilder to display a "Specify New Project" dialog with the "Workspace Directory" and "Name (Subdirectory)" fields set.
+
+  - title:  Simulation template "Truchas.sbt"
+    action: Set the "Simulation Template File" to the Truchas template that is in the truchas-extensions repository at <tt>simulation-workflows/Truchas.sbt</tt>.
+
+  - title:  Geometry model "mesh2.gen"
+    action: Set the "Geometry File" to <tt>truchas-extensions/test/cmb-target-problems/meshes/mesh2.gen</tt>.
+
+  - title:  Apply
+    action: Click the "Apply" button.
+    expect: modelbuilder to close the dialog, then display the model geometry in the 3D view and update the Attribute Editor to display a "Modules" tab. On some systems, the model is not immediately displayed, but instead it appears when the "Resources" tab is selected. If that occurs, add a comment to the GitLab issue. Verify that there are two items listed in the "Resources" panel, labeled <tt>sbi.default</tt> and <tt>mesh2</tt>.
+
+  - title: Surface Entities
+    action: Above in the tool bars you should see three buttons with eyes, select the one that says "Show only surface entities"
+    expect: The color of the model to change to darker colors.
+
+  - title: Analysis
+    action: In the "Analysis" tab select "Truchas" and "Heat Transfer"
+    expect: Model builder to open a several modules in the "Analysis" tab
+
+  - title: Numerics
+    action: |
+      In the "Analysis" tab under the "Numeric" section set the:
+      <ol>
+        <li>Dt_init = 0.01</li>
+        <li>Dt_Grow = 5.0</li>
+        <li>Dt_Max = 60</li>
+      </ol>
+
+  - title: Materials
+    action: |
+      In the "Materials" tab
+      <ol>
+        <li>Click "New" and name it graphite-2020</li>
+        <li>Set the density to 1750</li>
+        <li>Set the enthalpy to "Specific heat" => 1500</li>
+        <li>Set conductivity to 100</li>
+      </ol>
+      Create another new material
+      <ol>
+        <li>Set the name to uranium</li>
+        <li>Set the density to 17500</li>
+        <li>Set the enthalpy to "Specific heat" => 160.9</li>
+        <li>Set conductivity to 46.05</li>
+      </ol>
+
+  - title: Adding Uranium phases
+    action: |
+      In the uranium material you just created:
+      <ol>
+        <li>Uncheck "Enthalpy" and click "Add Phase"</li>
+        <li>Name Phase 1 "gamma-U"</li>
+        <li>Phase Enthalpy => Specific Heat => expect field to display 160.9</li>
+      </ol>
+      Phase Change
+      <ol>
+        <li>Set Latent heat to 35794</li>
+        <li>Set Low transition temp to 1396</li>
+        <li>Set High transition temp to 1416</li>
+      </ol>
+      Phase 2
+      <ol>
+        <li>Name Phase 2 "liquid-U"</li>
+        <li>Enthalpy => SPecific Heat => 201.3</li>
+      </ol>
+
+  - title: Checkpoint
+    action: At this point save the project with the in the "Project" tab and clicking "Save Project"
+
+  - title: Bodies
+    action: |
+      In the "Bodies" tab:
+      <ol>
+        <li>Click "New" and set the material type to uranium</li>
+        <li>Set the temperature to 1500</li>
+        <li>Assign element block 1</li>
+      </ol>
+      Create another new material
+      <ol>
+        <li>Set the new material to graphite-2020</li>
+        <li>Click the f(x) button next to the temp</li>
+        <li>Select function type "Tabular"</li>
+        <li>Set the independant variable to "Z"</li>
+        <li>First row -0.075, 1200</li>
+        <li>Second row 0.285, 1400</li>
+        <li>Click "okay"</li>
+        <li>Assign block 2-5</li>
+      </ol>
+
+  - title: Save
+    action: Save the file in your test folder under the name "prob3.sbi" and export
+
+  - title: Export
+    action: |
+      From the "Project" menu
+      <ol>
+        <li>Select "Export Project" to open the "Simulation Export Dialog".</li>
+        <li>Click the "Apply" button. Expect the dialog to close.</li>
+      </ol>
+    expect: modelbuilder generates the file <tt>prob5b.inp</tt>.

@@ -1,0 +1,112 @@
+{
+  "name": "prob1",
+  "steps": [
+    {
+      "action": "Complete the setup procedures first, include new test folder with today's date.",
+      "title": "Setup, create test directory yyyy-mm-dd"
+    },
+    {
+      "action": "Clone the truchas-extensions repository, either\n<a class=\"literal-link\" target=\"_blank\" href=\"https://gitlab.kitware.com/cmb/plugins/truchas-extensions.git\"></a>\nor <a class=\"literal-link\" target=\"_blank\" href=\"git@gitlab.kitware.com:cmb/plugins/truchas-extensions.git\"></a>.\n",
+      "title": "Clone truchas-extensions repository"
+    },
+    {
+      "action": "Select Project => New Project...",
+      "expect": "modelbuilder to open a directory browser dialog",
+      "title": "New project"
+    },
+    {
+      "action": "In that dialog, navigate to the test directory you created in the setup procedure and create a subdirectory <tt>yyyy-mm-dd/prob5b</tt>. Select the new subdirectory and click the `OK`.",
+      "expect": "modelbuilder to display a \"Specify New Project\" dialog with the \"Workspace Directory\" and \"Name (Subdirectory)\" fields set.",
+      "title": "New project directory <tt>yyyy-mm-dd/prob5b</tt>"
+    },
+    {
+      "action": "Set the \"Simulation Template File\" to the Truchas template that is in the truchas-extensions repository at <tt>simulation-workflows/Truchas.sbt</tt>.",
+      "title": "Simulation template \"Truchas.sbt\""
+    },
+    {
+      "action": "Set the \"Geometry File\" to <tt>truchas-extensions/test/cmb-target-problems/meshes/mesh2.gen</tt>.",
+      "title": "Geometry model \"mesh2.gen\""
+    },
+    {
+      "action": "Click the \"Apply\" button.",
+      "expect": "modelbuilder to close the dialog, then display the model geometry in the 3D view and update the Attribute Editor to display a \"Modules\" tab. On some systems, the model is not immediately displayed, but instead it appears when the \"Resources\" tab is selected. If that occurs, add a comment to the GitLab issue. Verify that there are two items listed in the \"Resources\" panel, labeled <tt>sbi.default</tt> and <tt>mesh2</tt>.",
+      "title": "Apply"
+    },
+    {
+      "action": "Above in the tool bars you should see three buttons with eyes, select the one that says \"Show only surface entities\"",
+      "expect": "The color of the model to change to darker colors.",
+      "title": "Surface Entities"
+    },
+    {
+      "action": "<li>Select whether to record or play the test. In general, you should select PLAY if the xml file is available.</li>\n<li>If you select PLAY, use the \"Tools\" => \"Play Test...\" menu item and navigate to the \"prob5a-1.xml\" file.</li>\n<li>If you select RECORD, use the \"Tools\" => \"Record Test...\" menu and specify \"prob5a-1.xml\" as the file.</li>\n",
+      "begin": "record/play",
+      "title": "Begin record/play prob5a-1.xml"
+    },
+    {
+      "action": "In the \"Select Modules\" section,\n<li>In the dropdown control select \"Truchas\".</li>\n<li>Then select \"Heat Transfer\" and \"Fluid Flow\".</li>\n<li>Then select \"Viscous Flow\"\n",
+      "expect": "Model builder to open a several modules in the \"Analysis\" tab",
+      "title": "Select Modules"
+    },
+    {
+      "action": "In the \"Heat Transfer Mesh\" section, click the \"Coordinate Scale Factor\" checkbox and enter 0.001 in the field to the right.",
+      "title": "Heat Transfer Mesh"
+    },
+    {
+      "action": "In the \"Analysis\" tab under the \"Numeric\" section set:\n<ol>\n  <li>Set \"Dt_Init\" to 0.01</li>\n  <li>Set \"Dt_Grow\" to 1.05</li>\n  <li>Set \"Dt_Max\" to 0.002</li>\n  <li>Set \"Dt_Min\" to 1.0e-7</li>\n</ol>\n",
+      "title": "Numerics"
+    },
+    {
+      "action": "In the \"Materials\" => \"Specification\" tab\n<ol>\n  <li>Click \"New\" to create attribute and set its name to \"graphite\".</li>\n  <li>Set \"Density (rho)\"\" to 1750.</li>\n  <li>Set \"Enthalpy\" to \"Specific Heat\"</li>\n  <li>Set \"Specific Heat (Cp)\" to 1500.</li>\n  <li>Set \"Conductivity\" to 100.</li>\n</ol>\n",
+      "title": "Materials - graphite"
+    },
+    {
+      "action": "In the \"Materials\" => \"Specification\" tab,\n<ol>\n  <li>click \"New\" to create second attribute, set its name to \"U\"</li>\n  <li>Set \"Density\" to 17500.</li>\n  <li>Set \"Enthalpy\" to \"Specific Heat\" and set \"Specific Heat (Cp)\" to 160.9</li>\n  <li>Set \"Conductivity\" to 46.05</li>\n</ol>\n\nClick the \"Add Phase\" button. In response, modelbuilder displays an \"advanced\" view with 4 collapsible sections.\n<br />\nIn the \"Common Material Properties\" section, uncheck the \"Enthalpy\" checkbox.\n<br />\nIn the \"Phase 1\":\" Phase 1\" section\n<ol>\n  <li>Change the \"Name\" field from \"Phase 1\" to \"U-gamma\".</li>\n  <li>Set \"Enthalpy\" to \"Specific Heat\". The \"Specific Heat (Cp)\" should already be set to 160.9</li>\n  <li>Collapse the \"Phase 1\" section</li>\n</ol>\n\nIn the \"Phase Change\" section\n<ol>\n  <li>Set \"Latent Heat (Lf)\" to 35794</li>\n  <li>Set \"Low Transition Temperature (Ts)\" to 1396</li>\n  <li>Set \"High Transition Temperature\" to 1416</li>\n  <li>Collapse the \"Phase Change\" section</li>\n</ol>\n\nIn the \"Phase 2\":\"\" section\n<ol>\n  <li>Set the \"Name\" field to \"U-liquid\".</li>\n  <li>Set \"Enthalpy\" to \"Specific Heat\", and set \"Specific Heat (Cp)\" to 201.3</li>\n  <li>Check the \"Fluid\" checkbox.</li>\n  <li>Set \"Viscosity (nu)\" to 0.005</li>\n</ol>\n",
+      "title": "Materials - uranium"
+    },
+    {
+      "action": "Select the \"Project\" => \"Save Project\" menu item.",
+      "title": "Save Project"
+    },
+    {
+      "action": "Todo",
+      "title": "Modules -> Fluid Flow -> Boundary Conditions"
+    },
+    {
+      "action": "Todo",
+      "title": "Modules => Fluid Flow => Solver"
+    },
+    {
+      "action": "Navigate to Modules => Heat Transfer => Boundary Conditions => Boundary\n<ol>\n  <li>Select \"Flux\" from the dropdown menu and click \"New\"; Set \"Heat Flux\" to 0; Assign to \"side set 1 - symmetry\".</li>\n  <li>Select \"HTC\" and click \"New\"; set \"Heat Transfer Coefficient\" to 50; set \"Ambient Temperature\" to 300; Assign to \"side set 2\"</li>\n  <li>Select \"Radiation\" and click \"New\"; set \"Emissivity\" to 0.75; set \"Ambient Temperature\" to 300; assign to side sets 20, 21, 22</li>\n  <li>Select \"Flux\" and click \"New\"; set \"Heat Flux\" to 0; assign to side sets 10, 11, 23</li>\n  <li>Select \"Flux\" and click \"New\"; set \"Heat Flux\" to 0; assign to side set 6</li>\n</ol>\n",
+      "title": "Modules - Heat Transfer - Boundary Conditions - Boundary"
+    },
+    {
+      "action": "Navigate to Modules => Heat Transfer => Boundary Conditions => Boundary\n<ol>\n  <li>HTC -> New => coef 500, side set 30</li>\n  <li>Gap radiation => New => emiss 0.75, side set 40</li>\n  <li>HTC => New => coef 500, side sets 41 42</li>\n  <li>HTC => New coef 200, side sets 50, 51</li>\n  <li>HTC => New => coef 0, amb temp 300, side set 24</li>\n</ol>\n",
+      "title": "Modules - Heat Transfer - Boundary Conditions - Interface"
+    },
+    {
+      "action": "<li>Set the \"Analysis Type\" to \"Fluid plus Thermal\"\" to 1750.</li>\n<li>Set \"Relative residual tolerance\" to 1.0e-5</li>\n<li>Set \"Max NLK iterations\" \" to 1750.</li>\n",
+      "title": "Modules - Heat Transfer - Solver"
+    },
+    {
+      "action": "Select the \"Project\" => \"Save Project\" menu item.",
+      "title": "Save Project"
+    },
+    {
+      "action": "Navigate to Bodies => Body Assignment tab\n<ol>\n  <li>Click New to create Body attribute</li>\n  <li>Set \"Material\" to \"graphite\"</li>\n  <li>Set \"Initial Temperature\" to 1500</li>\n  <li>Assign to element blocks 2, 3, 4, 5</li>\n</ol>\n\n<ol>\n  <li>Click New to create a second Body attribute</li>\n  <li>Set \"Material\" to \"|Void\"</li>\n  <li>Set \"Initial Temperature\" to 1500</li>\n  <li>Assign to element block 1</li>\n</ol>\n",
+      "title": "Bodies"
+    },
+    {
+      "action": "In the \"Outputs\" tab\n  <ol>\n    <li>Set \"End Time\" to 2.0</li>\n    <li>Set \"Initial Output Delta-Time\" to 0.2</li>\n  </ol>\n",
+      "title": "Outputs"
+    },
+    {
+      "action": "Select the \"Project\" => \"Save Project\" menu item.",
+      "title": "Save Project"
+    },
+    {
+      "action": "If you are recording the test, click the \"Stop Recording\" button to save the xml script.",
+      "end": "record/play",
+      "title": "Finish record/play"
+    }
+  ]
+}
