@@ -6,11 +6,20 @@ set(ENABLE_python3 ON CACHE BOOL "")
 set(CTEST_USE_LAUNCHERS "ON" CACHE STRING "")
 
 # Enable SMTK testing.
-set(TEST_smtk "ON" CACHE BOOL "")
-set(smtk_FETCH_LFS "ON" CACHE BOOL "")
+set(TEST_smtk "OFF" CACHE BOOL "")
+set(smtk_FETCH_LFS "OFF" CACHE BOOL "")
 
 # Disable CMB testing.
 set(TEST_cmb "OFF" CACHE BOOL "")
+
+# Set dev mode and turn off unwanted projects
+set(DEVELOPER_MODE_cmb "ON" CACHE BOOL "")
+set(DEVELOPER_MODE_smtk "ON" CACHE BOOL "")
+set(ENABLE_DOCUMENTATION "OFF" CACHE BOOL "")
+set(ENABLE_cmbusersguide "OFF" CACHE BOOL "")
+set(ENABLE_smtkresourcemanagerstate "OFF" CACHE BOOL "")
+set(ENABLE_smtkusersguide "OFF" CACHE BOOL "")
+
 
 # Suppress various project outputs. It is too large for the log to follow.
 set(SUPPRESS_itk_OUTPUT "ON" CACHE BOOL "")
@@ -33,7 +42,3 @@ if ("$ENV{CMAKE_CONFIGURATION}" MATCHES "centos7")
   set(CMAKE_C_FLAGS "-march=core2 -mno-avx512f" CACHE STRING "")
   set(CMAKE_CXX_FLAGS "-march=core2 -mno-avx512f" CACHE STRING "")
 endif ()
-
-# if (NOT "$ENV{CI_JOB_NAME}" MATCHES "windows")
-#   include("${CMAKE_CURRENT_LIST_DIR}/configure_sccache.cmake")
-# endif ()
