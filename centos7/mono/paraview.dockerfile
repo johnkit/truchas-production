@@ -10,7 +10,8 @@ USER buildslave
 WORKDIR /home/buildslave
 
 # Pull cmb-superbuild and install cmake, ninja
-RUN git clone --depth 1 --recursive https://gitlab.kitware.com/john.tourtellott/cmb-superbuild.git src
+# RUN git clone --depth 1 --recursive https://gitlab.kitware.com/john.tourtellott/cmb-superbuild.git src
+RUN  git clone --depth 1 --recursive https://gitlab.kitware.com/cmb/cmb-superbuild.git src
 RUN cd src && .gitlab/ci/cmake.sh
 RUN cd src && .gitlab/ci/ninja.sh
 
@@ -27,4 +28,4 @@ RUN cd build && scl enable devtoolset-7 -- cmake -G Ninja -C /home/buildslave/pa
 
 # RUN ls -l /home/buildslave/src/.gitlab/ninja
 COPY remove_build_files.sh /home/buildslave/
-RUN cd build && scl enable devtoolset-7 -- ninja; /home/buildslave/remove_build_files.sh
+RUN cd build && scl enable devtoolset-7 -- ninja; /home/buildslave/remove_build_files.sh; rm -f /home/buildslave/build/downloads/*

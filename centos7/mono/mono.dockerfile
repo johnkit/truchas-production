@@ -9,10 +9,9 @@ RUN chown buildslave:buildslave /home/buildslave
 USER buildslave
 WORKDIR /home/buildslave
 
-COPY mono.cmake /home/buildslave/
-
 # Pull cmb-superbuild and install cmake, ninja
-RUN git clone --depth 1 --recursive https://gitlab.kitware.com/john.tourtellott/cmb-superbuild.git src
+# RUN git clone --depth 1 --recursive https://gitlab.kitware.com/john.tourtellott/cmb-superbuild.git src
+RUN  git clone --depth 1 --recursive https://gitlab.kitware.com/cmb/cmb-superbuild.git src
 RUN cd src && .gitlab/ci/cmake.sh
 RUN cd src && .gitlab/ci/ninja.sh
 
@@ -24,6 +23,7 @@ RUN echo $PATH
 RUN ls -l /home/buildslave/src/.gitlab/cmake/bin/cmake
 
 # Setup build directory and configure
+COPY mono.cmake /home/buildslave/
 RUN mkdir /home/buildslave/build
 RUN cd build && scl enable devtoolset-7 -- cmake -G Ninja -C /home/buildslave/mono.cmake ../src
 
