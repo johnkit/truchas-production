@@ -43,7 +43,7 @@
       "title": "Begin record/play prob5a-1.xml"
     },
     {
-      "action": "In the \"Select Modules\" section,\n<li>In the dropdown control select \"Truchas\".</li>\n<li>Then select \"Heat Transfer\" and \"Fluid Flow\".</li>\n<li>Then select \"Viscous Flow\"\n",
+      "action": "In the \"Select Modules\" section,\n<li>In the dropdown control select \"Truchas\".</li>\n<li>Then select \"Heat Transfer\", \"Fluid Flow\", \"Viscous Flow\", \"Include Void Material\".</li>\n",
       "expect": "Model builder to open a several modules in the \"Analysis\" tab",
       "title": "Select Modules"
     },
@@ -80,11 +80,11 @@
       "title": "Modules - Heat Transfer - Boundary Conditions - Boundary"
     },
     {
-      "action": "Navigate to Modules => Heat Transfer => Boundary Conditions => Boundary\n<ol>\n  <li>HTC -> New => coef 500, side set 30</li>\n  <li>Gap radiation => New => emiss 0.75, side set 40</li>\n  <li>HTC => New => coef 500, side sets 41 42</li>\n  <li>HTC => New coef 200, side sets 50, 51</li>\n  <li>HTC => New => coef 0, amb temp 300, side set 24</li>\n</ol>\n",
+      "action": "Navigate to Modules => Heat Transfer => Boundary Conditions => Boundary\n<ol>\n  <li>HTC -> New => coef 500, side set 30</li>\n  <li>Gap radiation => New => emiss 0.75, side set 40</li>\n  <li>HTC => New => coef 500, side sets 41 42</li>\n  <li>HTC => New coef 200, side sets 50, 51</li>\n  <li>HTC => New => coef 0, side set 24</li>\n</ol>\n",
       "title": "Modules - Heat Transfer - Boundary Conditions - Interface"
     },
     {
-      "action": "<li>Set the \"Analysis Type\" to \"Fluid plus Thermal\"\" to 1750.</li>\n<li>Set \"Relative residual tolerance\" to 1.0e-5</li>\n<li>Set \"Max NLK iterations\" \" to 1750.</li>\n",
+      "action": "<li>Set \"Relative residual tolerance\" to 1.0e-5</li>\n<li>Set \"Max NLK iterations\" \" to 1750.</li>\n",
       "title": "Modules - Heat Transfer - Solver"
     },
     {
@@ -92,7 +92,7 @@
       "title": "Save Project"
     },
     {
-      "action": "Navigate to Bodies => Body Assignment tab\n<ol>\n  <li>Click New to create Body attribute</li>\n  <li>Set \"Material\" to \"graphite\"</li>\n  <li>Set \"Initial Temperature\" to 1500</li>\n  <li>Assign to element blocks 2, 3, 4, 5</li>\n</ol>\n\n<ol>\n  <li>Click New to create a second Body attribute</li>\n  <li>Set \"Material\" to \"|Void\"</li>\n  <li>Set \"Initial Temperature\" to 1500</li>\n  <li>Assign to element block 1</li>\n</ol>\n",
+      "action": "Navigate to Bodies => Body Assignment tab\n<ol>\n  <li>Click New to create Body attribute</li>\n  <li>Set \"Material Type\" (drop down) to \"Real\"</li>\n  <li>Set \"Material\" (dropdown) to \"graphite\"</li>\n  <li>Set \"Initial Temperature\" to 1500</li>\n  <li>Assign to element blocks 2, 3, 4, 5</li>\n</ol>\n\n<ol>\n  <li>Click New to create a second Body attribute</li>\n  <li>Set \"Material Type\" to \"Void\"</li>\n  <li>Assign to element block 1</li>\n</ol>\n",
       "title": "Bodies"
     },
     {

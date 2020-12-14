@@ -45,8 +45,7 @@ steps:
     action: |
       In the "Select Modules" section,
       <li>In the dropdown control select "Truchas".</li>
-      <li>Then select "Heat Transfer" and "Fluid Flow".</li>
-      <li>Then select "Viscous Flow"
+      <li>Then select "Heat Transfer", "Fluid Flow", "Viscous Flow", "Include Void Material".</li>
     expect: Model builder to open a several modules in the "Analysis" tab
 
   - title: Heat Transfer Mesh
@@ -153,12 +152,11 @@ steps:
         <li>Gap radiation => New => emiss 0.75, side set 40</li>
         <li>HTC => New => coef 500, side sets 41 42</li>
         <li>HTC => New coef 200, side sets 50, 51</li>
-        <li>HTC => New => coef 0, amb temp 300, side set 24</li>
+        <li>HTC => New => coef 0, side set 24</li>
       </ol>
 
   - title: Modules - Heat Transfer - Solver
     action: |
-      <li>Set the "Analysis Type" to "Fluid plus Thermal"" to 1750.</li>
       <li>Set "Relative residual tolerance" to 1.0e-5</li>
       <li>Set "Max NLK iterations" " to 1750.</li>
 
@@ -170,15 +168,15 @@ steps:
       Navigate to Bodies => Body Assignment tab
       <ol>
         <li>Click New to create Body attribute</li>
-        <li>Set "Material" to "graphite"</li>
+        <li>Set "Material Type" (drop down) to "Real"</li>
+        <li>Set "Material" (dropdown) to "graphite"</li>
         <li>Set "Initial Temperature" to 1500</li>
         <li>Assign to element blocks 2, 3, 4, 5</li>
       </ol>
 
       <ol>
         <li>Click New to create a second Body attribute</li>
-        <li>Set "Material" to "|Void"</li>
-        <li>Set "Initial Temperature" to 1500</li>
+        <li>Set "Material Type" to "Void"</li>
         <li>Assign to element block 1</li>
       </ol>
 
