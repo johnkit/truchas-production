@@ -1,4 +1,4 @@
-FROM johnkit/cmb-ubuntu1604-base
+FROM johnkit/new-ubuntu1604-base
 LABEL maintainer="John Tourtellott <john.tourtellott@kitware.com>"
 
 USER root
