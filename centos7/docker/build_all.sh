@@ -1,4 +1,9 @@
 #!/bin/sh
+echo THIS VERSION IS OBSOLETE
+echo USE THE mono FOLDER INSTEAD
+echo .
+exit 1
+
 set -e  # exit on error
 
 # Builds the entire modelbuilder-truchas software chain from scratch
