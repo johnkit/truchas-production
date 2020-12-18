@@ -1,23 +1,25 @@
-FROM johnkit/cmb-ubuntu1604-qt
-MAINTAINER John Tourtellott <john.tourtellott@kitware.com>
-
-
-# Install packages required for ParaView
-USER root
-# RUN apt-get install -y libgl1-mesa-dev libxt-dev qt5-default libqt5x11extras5-dev libqt5help5 qttools5-dev qtxmlpatterns5-dev-tools libqt5svg5-dev python3-dev libopenmpi-dev libtbb-dev
-RUN apt-get install -y libgl1-mesa-dev libxt-dev libtbb-dev
-
+FROM johnkit/new-ubuntu1604-base
+LABEL maintainer="John Tourtellott <john.tourtellott@kitware.com>"
 
 USER buildslave
+WORKDIR /home/buildslave
 
-# Clone cmb-superbuild
-RUN mkdir -p /home/buildslave/cmb-superbuild/build
-RUN git clone --branch truchas-production --depth 1 --recursive https://gitlab.kitware.com/john.tourtellott/cmb-superbuild.git  /home/buildslave/cmb-superbuild/src
-RUN cd /home/buildslave/cmb-superbuild/src && git log -1
+# Pull cmb-superbuild and install cmake, ninja
+# RUN  git clone --depth 1 --recursive https://gitlab.kitware.com/cmb/cmb-superbuild.git src
+RUN git clone --depth 1 --recursive --branch truchas-production https://gitlab.kitware.com/john.tourtellott/cmb-superbuild.git src
+RUN cd src && .gitlab/ci/cmake.sh
+RUN cd src && .gitlab/ci/ninja.sh
 
-# Copy build scripts
-COPY remove_build_files.sh /home/buildslave/remove_build_files.sh
-COPY paraview_build.sh /home/buildslave/paraview_build.sh
+# ENV PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+# RUN echo $PATH
+ENV PATH="/home/buildslave/src/.gitlab:/home/buildslave/src/.gitlab/cmake/bin:${PATH}"
+# RUN echo $PATH
+# RUN ls -l /home/buildslave/src/.gitlab/cmake/bin/cmake
 
-WORKDIR /home/buildslave/cmb-superbuild/build
-RUN  /home/buildslave/paraview_build.sh; /home/buildslave/remove_build_files.sh; exit 0
+# Setup build directory and configure
+COPY paraview.cmake /home/buildslave/
+RUN mkdir /home/buildslave/build
+RUN cd build; cmake -G Ninja -C /home/buildslave/paraview.cmake ../src
+
+COPY remove_build_files.sh /home/buildslave/
+RUN cd build; ninja; /home/buildslave/remove_build_files.sh; rm -f /home/buildslave/build/downloads/*

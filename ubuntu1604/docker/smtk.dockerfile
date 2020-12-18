@@ -1,4 +1,4 @@
-FROM johnkit/cmb-truchas-ubuntu1604-paraview
+FROM johnkit/new-truchas-ubuntu1604-paraview
 LABEL maintainer="John Tourtellott <john.tourtellott@kitware.com>"
 USER buildslave
 
