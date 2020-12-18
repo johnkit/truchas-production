@@ -10,8 +10,8 @@ USER buildslave
 WORKDIR /home/buildslave
 
 # Pull cmb-superbuild and install cmake, ninja
-# RUN git clone --depth 1 --recursive https://gitlab.kitware.com/john.tourtellott/cmb-superbuild.git src
-RUN  git clone --depth 1 --recursive https://gitlab.kitware.com/cmb/cmb-superbuild.git src
+# RUN  git clone --depth 1 --recursive https://gitlab.kitware.com/cmb/cmb-superbuild.git src
+RUN git clone --depth 1 --recursive --branch truchas-production https://gitlab.kitware.com/john.tourtellott/cmb-superbuild.git src
 RUN cd src && .gitlab/ci/cmake.sh
 RUN cd src && .gitlab/ci/ninja.sh
 

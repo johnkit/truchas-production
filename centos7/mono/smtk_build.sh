@@ -1,4 +1,5 @@
 #!/bin/sh
+# Rerun cmake to change generator from ninja to make
 
 cd /home/buildslave/build
 mv CMakeCache.txt Ninja-CMakeCache.txt
@@ -16,12 +17,14 @@ cmake -G "Unix Makefiles" \
   -DENABLE_smtk:BOOL=ON \
   -DENABLE_smtkprojectmanager:BOOL=ON \
   -DENABLE_smtkresourcemanagerstate:BOOL=OFF \
+  -DENABLE_smtktruchasextensions:BOOL=ON \
   -DENABLE_smtkusersguide:BOOL=OFF \
   -Dsmtk_FETCH_LFS:BOOL=OFF \
   -DTEST_cmb:BOOL=OFF \
   -DTEST_smtk:BOOL=OFF \
   /home/buildslave/src
 
+# Build smtk
 make smtk/fast
 
 # Remove lfs files (if any)
