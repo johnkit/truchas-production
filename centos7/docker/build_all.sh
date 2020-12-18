@@ -1,4 +1,9 @@
 #!/bin/sh
+echo THIS VERSION IS OBSOLETE
+echo USE THE mono FOLDER INSTEAD
+echo .
+exit 1
+
 set -e  # exit on error
 
 # Builds the entire modelbuilder-truchas software chain from scratch
@@ -6,7 +11,7 @@ datecode=`date +%y%m%d`
 package_name=modelbuilder-truchas-centos7-${datecode}
 
 # Generic (cmb-centos-*)
-# docker build -f base.dockerfile --tag=johnkit/cmb-centos7-base .
+docker build -f base.dockerfile --tag=johnkit/cmb-centos7-base .
 
 # Truchas-specific (cmb-truchas-centos-*)
 docker build -f paraview.dockerfile --tag=johnkit/cmb-truchas-centos7-paraview --no-cache .
@@ -20,4 +25,5 @@ timestamp=`date +%s`
 temp="temp${timestamp}"
 docker create -it --name ${temp} johnkit/cmb-truchas-centos7-modelbuilder bash
 docker cp ${temp}:/home/buildslave/cmb-superbuild/build/${package_name}.tar.gz .
+docker cp ${temp}:/home/buildslave/cmb-superbuild/build/ctest.log .
 docker rm -f ${temp}
