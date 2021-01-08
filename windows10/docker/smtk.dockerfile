@@ -7,7 +7,7 @@ FROM johnkit/cmb-truchas-win-paraview
 SHELL [ "powershell", "-command"]
 
 # HACK for testing interim fixes
-# RUN cd C:/Users/ContainerUser/code/cmb-superbuild; git fetch origin truchas-production; git checkout FETCH_HEAD; git log -1
+RUN cd C:/Users/ContainerUser/code/cmb-superbuild; git fetch origin truchas-production; git checkout FETCH_HEAD; git log -1
 # RUN cd C:/Users/ContainerUser/code/cmb-superbuild/superbuild; git remote add john https://gitlab.kitware.com/john.tourtellott/common-superbuild.git; git fetch john; git reset --hard john/truchas-production; git log -1
 
 # Delete old cmake cache, which uses ninja generator
