@@ -15,7 +15,7 @@ cmake -G "Unix Makefiles" \
   -DENABLE_DOCUMENTATION:BOOL=OFF \
   -DENABLE_python3:BOOL=ON \
   -DENABLE_smtk:BOOL=ON \
-  -DENABLE_smtkprojectmanager:BOOL=ON \
+  -DENABLE_smtkprojectmanager:BOOL=OFF \
   -DENABLE_smtkresourcemanagerstate:BOOL=OFF \
   -DENABLE_smtktruchasextensions:BOOL=ON \
   -DENABLE_smtkusersguide:BOOL=OFF \
@@ -24,7 +24,8 @@ cmake -G "Unix Makefiles" \
   -DTEST_smtk:BOOL=OFF \
   /home/buildslave/src
 
-# Build smtk
+# Have to explicitly download now (Mar 2021)
+make smtk-download
 make smtk/fast
 
 # Remove lfs files (if any)
