@@ -5,8 +5,9 @@
 FROM johnkit/cmb-win-tools
 SHELL [ "powershell", "-command"]
 
-RUN choco install python3 --version 3.7.4 --installargs " '/quiet TargetDir=C:\\Python37 Shortcuts=0 Include_doc=0 Include_tcltk=0 Include_launcher=0 PrependPath=0' " --overrideargs --yes
-RUN C:/Python37/python.exe --version; exit 0
+RUN choco upgrade chocolatey
+RUN choco install python3 --version 3.8.1 --installargs " '/quiet TargetDir=C:\\Python38 Shortcuts=0 Include_doc=0 Include_tcltk=0 Include_launcher=0 PrependPath=0' " --overrideargs --yes
+RUN C:/Python38/python.exe --version; exit 0
 
 RUN mkdir /Users/ContainerUser/code
 WORKDIR /Users/ContainerUser/code

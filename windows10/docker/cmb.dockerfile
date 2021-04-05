@@ -10,7 +10,7 @@ SHELL [ "powershell", "-command"]
 
 # Cherry pick fix for python3 packaging (need user config first)
 # RUN cd C:/Users/ContainerUser/code/cmb-superbuild/superbuild; git log -1;
-RUN cd C:/Users/ContainerUser/code/cmb-superbuild/superbuild; git config user.email "container@kitware.com"; git config user.name "ContainerUser"
+# RUN cd C:/Users/ContainerUser/code/cmb-superbuild/superbuild; git config user.email "container@kitware.com"; git config user.name "ContainerUser"
 RUN cd C:/Users/ContainerUser/code/cmb-superbuild/superbuild; git remote add john https://gitlab.kitware.com/john.tourtellott/common-superbuild.git;
 RUN cd C:/Users/ContainerUser/code/cmb-superbuild/superbuild; git fetch john package-system-python3-windows
 RUN cd C:/Users/ContainerUser/code/cmb-superbuild/superbuild; git checkout package-system-python3-windows; git log -1
